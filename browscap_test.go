@@ -16,9 +16,9 @@ const (
 	TEST_ANDROID_AGENT = "Mozilla/5.0 (Linux; Android 9; MRD-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Mobile Safari/537.36"
 )
 
-func TestInitBrowsCap(t *testing.T) {
+func initFromTestIniFile(tb testing.TB) {
 	if err := InitBrowsCap(TEST_INI_FILE, false); err != nil {
-		t.Fatalf("%v", err)
+		tb.Fatalf("%v", err)
 	}
 }
 
@@ -142,6 +142,8 @@ func BenchmarkInit(b *testing.B) {
 }
 
 func BenchmarkGetBrowser(b *testing.B) {
+	initFromTestIniFile(b)
+	
 	data, err := ioutil.ReadFile("test-data/user_agents_sample.txt")
 	if err != nil {
 		b.Error(err)

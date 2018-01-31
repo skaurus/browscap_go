@@ -4,9 +4,11 @@
 package browscap_go
 
 import (
+	"bufio"
 	"io/ioutil"
 	"strings"
 	"testing"
+	"os"
 )
 
 const (
@@ -22,7 +24,28 @@ func initFromTestIniFile(tb testing.TB) {
 	}
 }
 
+func TestInitBrowsCap(t *testing.T) {
+	if err := InitBrowsCap(TEST_INI_FILE, true); err != nil {
+		t.Fatalf("%v", err)
+	}
+}
+
+func TestInitBrowsCapFromReader(t *testing.T) {
+	file, err := os.Open(TEST_INI_FILE)
+	if err != nil {
+		t.Fatalf("%v", err)
+	}
+	defer file.Close()
+
+	buf := bufio.NewReader(file)
+
+	if err := InitBrowsCapFromReader(buf, true); err != nil {
+		t.Fatalf("%v", err)
+	}
+}
+
 func TestGetBrowser(t *testing.T) {
+	initFromTestIniFile(t)
 	if browser, ok := GetBrowser(TEST_USER_AGENT); !ok {
 		t.Error("Browser not found")
 	} else if browser.Browser != "Chrome" {
@@ -39,6 +62,7 @@ func TestGetBrowser(t *testing.T) {
 }
 
 func TestGetBrowserIPhone(t *testing.T) {
+	initFromTestIniFile(t)
 	if browser, ok := GetBrowser(TEST_IPHONE_AGENT); !ok {
 		t.Error("Browser not found")
 	} else if browser.DeviceName != "iPhone" {
@@ -65,6 +89,7 @@ func TestGetBrowserAndroid(t *testing.T) {
 }
 
 func TestGetBrowserYandex(t *testing.T) {
+	initFromTestIniFile(t)
 	if browser, ok := GetBrowser("Yandex Browser 1.1"); !ok {
 		t.Error("Browser not found")
 	} else if browser.Browser != "Yandex Browser" {
@@ -75,6 +100,7 @@ func TestGetBrowserYandex(t *testing.T) {
 }
 
 func TestGetBrowser360Spider(t *testing.T) {
+	initFromTestIniFile(t)
 	if browser, ok := GetBrowser("360Spider"); !ok {
 		t.Error("Browser not found")
 	} else if browser.Browser != "360Spider" {
@@ -85,6 +111,7 @@ func TestGetBrowser360Spider(t *testing.T) {
 }
 
 func TestGetBrowserIssues(t *testing.T) {
+	initFromTestIniFile(t)
 	// https://github.com/digitalcrab/browscap_go/issues/4
 	ua := "Mozilla/5.0 (iPad; CPU OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3"
 	if browser, ok := GetBrowser(ua); !ok {

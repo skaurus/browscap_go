@@ -24,7 +24,19 @@ var (
 	versionKey     = "Version"
 )
 
-func loadFromIniFileBuffer(buf *bufio.Reader) (*dictionary, error) {
+func loadFromIniFile(path string) (*dictionary, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	buf := bufio.NewReader(file)
+
+	return loadFromReader(buf)
+}
+
+func loadFromReader(buf *bufio.Reader) (*dictionary, error) {
 	dict := newDictionary()
 
 	sectionName := ""

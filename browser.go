@@ -26,12 +26,17 @@ type Browser struct {
 	Platform        string
 	PlatformShort   string
 	PlatformVersion string
+	PlatformDescription string
+	PlatformBits string
+	PlatformMaker string
 
+	DeviceName string
+	DeviceMaker string
 	// Mobile Phone, Mobile Device, Tablet, Desktop, TV Device, Console,
 	// FonePad, Ebook Reader, Car Entertainment System or unknown
 	DeviceType  string
-	DeviceName  string
-	DeviceBrand string
+	DeviceCodeName  string
+	DeviceCodeBrand string
 
 	Crawler string
 
@@ -115,16 +120,26 @@ func (browser *Browser) setValue(key, item string) {
 		}
 	} else if key == "Platform_Version" {
 		browser.PlatformVersion = item
+	} else if key == "Platform_Description" {
+		browser.PlatformDescription = item
+	} else if key == "Platform_Bits" {
+		browser.PlatformBits = item
+	} else if key == "Platform_Maker" {
+		browser.PlatformMaker = item
 	} else if key == "RenderingEngine_Name" {
 		browser.RenderingEngineName = item
 	} else if key == "RenderingEngine_Version" {
 		browser.RenderingEngineVersion = item
+	} else if key == "Device_Name" {
+		browser.DeviceName = item
+	} else if key == "Device_Maker" {
+		browser.DeviceMaker = item
 	} else if key == "Device_Type" {
 		browser.DeviceType = item
 	} else if key == "Device_Code_Name" {
-		browser.DeviceName = item
+		browser.DeviceCodeName = item
 	} else if key == "Device_Brand_Name" {
-		browser.DeviceBrand = item
+		browser.DeviceCodeBrand = item
 	}
 }
 
@@ -170,16 +185,31 @@ func extractBrowser(data map[string]string) *Browser {
 	if item, ok := data["Platform_Version"]; ok {
 		browser.PlatformVersion = item
 	}
+	if item, ok := data["Platform_Description"]; ok {
+		browser.PlatformDescription = item
+	}
+	if item, ok := data["Platform_Bits"]; ok {
+		browser.PlatformBits = item
+	}
+	if item, ok := data["Platform_Maker"]; ok {
+		browser.PlatformMaker = item
+	}
 
 	// Device
+	if item, ok := data["Device_Name"]; ok {
+		browser.DeviceName = item
+	}
+	if item, ok := data["Device_Maker"]; ok {
+		browser.DeviceMaker = item
+	}
 	if item, ok := data["Device_Type"]; ok {
 		browser.DeviceType = item
 	}
 	if item, ok := data["Device_Code_Name"]; ok {
-		browser.DeviceName = item
+		browser.DeviceCodeName = item
 	}
 	if item, ok := data["Device_Brand_Name"]; ok {
-		browser.DeviceBrand = item
+		browser.DeviceCodeBrand = item
 	}
 
 	return browser

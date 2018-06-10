@@ -15,6 +15,10 @@ type Browser struct {
 	built   bool   // has complete data from parents
 	buildMu sync.Mutex
 
+	Parent string
+
+	Comment string
+
 	Browser         string
 	BrowserVersion  string
 	BrowserMajorVer string
@@ -22,6 +26,8 @@ type Browser struct {
 	// Browser, Application, Bot/Crawler, Useragent Anonymizer, Offline Browser,
 	// Multimedia Player, Library, Feed Reader, Email Client or unknown
 	BrowserType string
+	BrowserMaker string
+	BrowserBits string
 
 	Platform        string
 	PlatformShort   string
@@ -93,6 +99,9 @@ func (browser *Browser) build(browsers map[string]*Browser) {
 func (browser *Browser) setValue(key, item string) {
 	if key == "Parent" {
 		browser.parent = item
+		browser.Parent = item
+	} else if key == "Comment" {
+		browser.Comment = item
 	} else if key == "Browser" {
 		browser.Browser = item
 	} else if key == "Version" {
@@ -103,6 +112,10 @@ func (browser *Browser) setValue(key, item string) {
 		browser.BrowserMinorVer = item
 	} else if key == "Browser_Type" {
 		browser.BrowserType = item
+	} else if key == "Browser_Maker" {
+		browser.BrowserMaker = item
+	} else if key == "Browser_Bits" {
+		browser.BrowserBits = item
 	} else if key == "JavaScript" {
 		browser.JavaScript = item
 	} else if key == "Cookies" {
@@ -169,6 +182,12 @@ func extractBrowser(data map[string]string) *Browser {
 	}
 	if item, ok := data["Browser_Type"]; ok {
 		browser.BrowserType = item
+	}
+	if item, ok := data["Browser_Maker"]; ok {
+		browser.BrowserMaker = item
+	}
+	if item, ok := data["Browser_Bits"]; ok {
+		browser.BrowserBits = item
 	}
 
 	// Platform

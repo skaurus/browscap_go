@@ -27,6 +27,7 @@ type Browser struct {
 	// Multimedia Player, Library, Feed Reader, Email Client or unknown
 	BrowserType string
 	BrowserMaker string
+	BrowserModus string
 	BrowserBits string
 
 	Platform        string
@@ -41,16 +42,24 @@ type Browser struct {
 	// Mobile Phone, Mobile Device, Tablet, Desktop, TV Device, Console,
 	// FonePad, Ebook Reader, Car Entertainment System or unknown
 	DeviceType  string
+	DevicePointingMethod string
 	DeviceCodeName  string
 	DeviceCodeBrand string
 
 	Crawler string
 
+	Frames string
+	IFrames string
+	Tables string
 	Cookies    string
 	JavaScript string
+	CssVersion string
+	AolVersion string
 
 	RenderingEngineName    string
 	RenderingEngineVersion string
+	RenderingEngineDescription string
+	RenderingEngineMaker string
 }
 
 func (browser *Browser) build(browsers map[string]*Browser) {
@@ -114,10 +123,22 @@ func (browser *Browser) setValue(key, item string) {
 		browser.BrowserType = item
 	} else if key == "Browser_Maker" {
 		browser.BrowserMaker = item
+	} else if key == "Browser_Modus" {
+		browser.BrowserModus = item
 	} else if key == "Browser_Bits" {
 		browser.BrowserBits = item
 	} else if key == "JavaScript" {
 		browser.JavaScript = item
+	} else if key == "CssVersion" {
+		browser.CssVersion = item
+	} else if key == "AolVersion" {
+		browser.AolVersion = item
+	} else if key == "Frames" {
+		browser.Frames = item
+	} else if key == "IFrames" {
+		browser.IFrames = item
+	} else if key == "Tables" {
+		browser.Tables = item
 	} else if key == "Cookies" {
 		browser.Cookies = item
 	} else if key == "Crawler" {
@@ -143,12 +164,18 @@ func (browser *Browser) setValue(key, item string) {
 		browser.RenderingEngineName = item
 	} else if key == "RenderingEngine_Version" {
 		browser.RenderingEngineVersion = item
+	} else if key == "RenderingEngine_Description" {
+		browser.RenderingEngineDescription = item
+	} else if key == "RenderingEngine_Maker" {
+		browser.RenderingEngineMaker = item
 	} else if key == "Device_Name" {
 		browser.DeviceName = item
 	} else if key == "Device_Maker" {
 		browser.DeviceMaker = item
 	} else if key == "Device_Type" {
 		browser.DeviceType = item
+	} else if key == "Device_Pointing_Method" {
+		browser.DevicePointingMethod = item
 	} else if key == "Device_Code_Name" {
 		browser.DeviceCodeName = item
 	} else if key == "Device_Brand_Name" {
@@ -272,4 +299,24 @@ func (browser *Browser) IsIPad() bool {
 
 func (browser *Browser) IsWinPhone() bool {
 	return strings.Index(browser.Platform, "WinPhone") != -1 || browser.Platform == "WinMobile"
+}
+
+func (browser *Browser) IsJavaScriptSupports() bool {
+	return browser.JavaScript == "true"
+}
+
+func (browser *Browser) IsCookiesSupports() bool {
+	return browser.Cookies == "true"
+}
+
+func (browser *Browser) IsFramesSupports() bool {
+	return browser.Frames == "true"
+}
+
+func (browser *Browser) IsIFramesSupports() bool {
+	return browser.IFrames == "true"
+}
+
+func (browser *Browser) IsTablesSupports() bool {
+	return browser.Tables == "true"
 }

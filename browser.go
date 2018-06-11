@@ -46,13 +46,25 @@ type Browser struct {
 	DeviceCodeName  string
 	DeviceCodeBrand string
 
+	SyndicationReader string
 	Crawler string
-
+	Fake string
+	Anonymized string
+	Modified string
+	Alpha string
+	Beta string
+	Win16 string
+	Win32 string
+	Win64 string
 	Frames string
 	IFrames string
 	Tables string
 	Cookies    string
 	JavaScript string
+	BackgroundSounds string
+	VBScript string
+	JavaApplets string
+	ActiveXControls string
 	CssVersion string
 	AolVersion string
 
@@ -129,6 +141,14 @@ func (browser *Browser) setValue(key, item string) {
 		browser.BrowserBits = item
 	} else if key == "JavaScript" {
 		browser.JavaScript = item
+	} else if key == "BackgroundSounds" {
+		browser.BackgroundSounds = item
+	} else if key == "VBScript" {
+		browser.VBScript = item
+	} else if key == "JavaApplets" {
+		browser.JavaApplets = item
+	} else if key == "ActiveXControls" {
+		browser.ActiveXControls = item
 	} else if key == "CssVersion" {
 		browser.CssVersion = item
 	} else if key == "AolVersion" {
@@ -141,8 +161,26 @@ func (browser *Browser) setValue(key, item string) {
 		browser.Tables = item
 	} else if key == "Cookies" {
 		browser.Cookies = item
+	} else if key == "isSyndicationReader" {
+		browser.SyndicationReader = item
 	} else if key == "Crawler" {
 		browser.Crawler = item
+	} else if key == "isFake" {
+		browser.Fake = item
+	} else if key == "isAnonymized" {
+		browser.Anonymized = item
+	} else if key == "isModified" {
+		browser.Modified = item
+	} else if key == "Alpha" {
+		browser.Alpha = item
+	} else if key == "Beta" {
+		browser.Beta = item
+	} else if key == "Win16" {
+		browser.Win16 = item
+	} else if key == "Win32" {
+		browser.Win32 = item
+	} else if key == "Win64" {
+		browser.Win64 = item
 	} else if key == "Platform" {
 		browser.Platform = item
 		browser.PlatformShort = strings.ToLower(item)
@@ -319,4 +357,56 @@ func (browser *Browser) IsIFramesSupports() bool {
 
 func (browser *Browser) IsTablesSupports() bool {
 	return browser.Tables == "true"
+}
+
+func (browser *Browser) IsFakeF() bool {
+	return browser.Fake == "true"
+}
+
+func (browser *Browser) IsAnonymizedF() bool {
+	return browser.Anonymized == "true"
+}
+
+func (browser *Browser) IsModifiedF() bool {
+	return browser.Modified == "true"
+}
+
+func (browser *Browser) IsSyndicationReaderF() bool {
+	return browser.SyndicationReader == "true"
+}
+
+func (browser *Browser) IsAlpha() bool {
+	return browser.Alpha == "true"
+}
+
+func (browser *Browser) IsBeta() bool {
+	return browser.Beta == "true"
+}
+
+func (browser *Browser) IsWin16() bool {
+	return browser.Win16 == "true"
+}
+
+func (browser *Browser) IsWin32() bool {
+	return browser.Win32 == "true"
+}
+
+func (browser *Browser) IsWin64() bool {
+	return browser.Win64 == "true"
+}
+
+func (browser *Browser) IsBackgroundSoundsSupports() bool {
+	return browser.BackgroundSounds == "true"
+}
+
+func (browser *Browser) IsVBScriptSupports() bool {
+	return browser.VBScript == "true"
+}
+
+func (browser *Browser) IsJavaAppletsSupports() bool {
+	return browser.JavaApplets == "true"
+}
+
+func (browser *Browser) IsActiveXControlsSupports() bool {
+	return browser.ActiveXControls == "true"
 }

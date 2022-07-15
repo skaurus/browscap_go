@@ -6,7 +6,7 @@ So far I merged PRs from [Khan](https://github.com/digitalcrab/browscap_go/pull/
 
 If anything was broken during the merges - the fault is entirely mine. Tests pass though and basic usage works.
 
-I have not changed the copyright in the LICENSE as I think it would be appropriate only if maintaince is formally transferred to me.
+I have not changed the copyright in the LICENSE as I think it would be appropriate only if maintenance is formally transferred to me.
 
 # Browser Capabilities GoLang Project
 

@@ -25,53 +25,53 @@ type Browser struct {
 	BrowserMinorVer string
 	// Browser, Application, Bot/Crawler, Useragent Anonymizer, Offline Browser,
 	// Multimedia Player, Library, Feed Reader, Email Client or unknown
-	BrowserType string
+	BrowserType  string
 	BrowserMaker string
 	BrowserModus string
-	BrowserBits string
+	BrowserBits  string
 
-	Platform        string
-	PlatformShort   string
-	PlatformVersion string
+	Platform            string
+	PlatformShort       string
+	PlatformVersion     string
 	PlatformDescription string
-	PlatformBits string
-	PlatformMaker string
+	PlatformBits        string
+	PlatformMaker       string
 
 	DeviceMaker string
 	// Mobile Phone, Mobile Device, Tablet, Desktop, TV Device, Console,
 	// FonePad, Ebook Reader, Car Entertainment System or unknown
-	DeviceType     string
+	DeviceType           string
 	DevicePointingMethod string
-	DeviceName     string
-	DeviceCodeName string
-	DeviceBrandName    string
+	DeviceName           string
+	DeviceCodeName       string
+	DeviceBrandName      string
 
 	SyndicationReader string
-	Crawler string
-	Fake string
-	Anonymized string
-	Modified string
-	Alpha string
-	Beta string
-	Win16 string
-	Win32 string
-	Win64 string
-	Frames string
-	IFrames string
-	Tables string
-	Cookies    string
-	JavaScript string
-	BackgroundSounds string
-	VBScript string
-	JavaApplets string
-	ActiveXControls string
-	CssVersion string
-	AolVersion string
+	Crawler           string
+	Fake              string
+	Anonymized        string
+	Modified          string
+	Alpha             string
+	Beta              string
+	Win16             string
+	Win32             string
+	Win64             string
+	Frames            string
+	IFrames           string
+	Tables            string
+	Cookies           string
+	JavaScript        string
+	BackgroundSounds  string
+	VBScript          string
+	JavaApplets       string
+	ActiveXControls   string
+	CssVersion        string
+	AolVersion        string
 
-	RenderingEngineName    string
-	RenderingEngineVersion string
+	RenderingEngineName        string
+	RenderingEngineVersion     string
 	RenderingEngineDescription string
-	RenderingEngineMaker string
+	RenderingEngineMaker       string
 }
 
 func (browser *Browser) build(browsers map[string]*Browser) {
@@ -292,8 +292,8 @@ func extractBrowser(data map[string]string) *Browser {
 		browser.DeviceType = item
 	}
 	if item, ok := data["Device_Pointing_Method"]; ok {
-                browser.DevicePointingMethod = item
-        }
+		browser.DevicePointingMethod = item
+	}
 	if item, ok := data["Device_Name"]; ok {
 		browser.DeviceName = item
 	}

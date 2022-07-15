@@ -21,25 +21,29 @@ browsers and their capabilities, such as name, versions, Javascript support and 
 
 First of all you need initialize library with [browscap.ini](http://browscap.org/) file. 
 And then you can get Browser information as `Browser` structure.
+Some fields will be available only with a full browscap.ini
 
 ```go
+package main
+
 import (
 	"fmt"
-	bgo "github.com/digitalcrab/browscap_go"
+
+	bgo "github.com/skaurus/browscap_go"
 )
 
 func main() {
 	if err := bgo.InitBrowsCap("browscap.ini", false); err != nil {
 		panic(err)
 	}
-	
+
 	browser, ok := bgo.GetBrowser("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36")
 	if !ok || browser == nil {
     	panic("Browser not found")
 	} else {
     	fmt.Printf("Browser = %s [%s] v%s\n", browser.Browser, browser.BrowserType, browser.BrowserVersion)
     	fmt.Printf("Platform = %s v%s\n", browser.Platform, browser.PlatformVersion)
-    	fmt.Printf("Device = %s [%s] %s\n", browser.DeviceName, browser.DeviceType, browser.DeviceBrand)
+    	fmt.Printf("Device = %s [%s] %s\n", browser.DeviceName, browser.DeviceType, browser.DeviceBrandName)
     	fmt.Printf("IsCrawler = %t\n", browser.IsCrawler())
     	fmt.Printf("IsMobile = %t\n", browser.IsMobile())
 	}

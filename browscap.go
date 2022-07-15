@@ -39,23 +39,9 @@ func InitBrowsCap(path string, force bool) error {
 	}
 	defer file.Close()
 
-	return InitBrowsCapFromBuffer(bufio.NewReader(file), force)
+	return InitBrowsCapFromReader(bufio.NewReader(file), force)
 }
 
-func InitBrowsCapFromBuffer(buf *bufio.Reader, force bool) error {
-	if initialized && !force {
-		return nil
-	}
-	var err error
-
-	// Load ini file
-	if dict, err = loadFromIniFileBuffer(buf); err != nil {
-		return fmt.Errorf("browscap: An error occurred while reading file, %v ", err)
-	}
-
-	initialized = true
-	return nil
-}
 
 func InitBrowsCapFromReader(reader *bufio.Reader, force bool) error {
 	if initialized && !force {

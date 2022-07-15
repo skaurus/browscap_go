@@ -37,7 +37,6 @@ type Browser struct {
 	PlatformBits string
 	PlatformMaker string
 
-	DeviceName string
 	DeviceMaker string
 	// Mobile Phone, Mobile Device, Tablet, Desktop, TV Device, Console,
 	// FonePad, Ebook Reader, Car Entertainment System or unknown

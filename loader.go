@@ -7,6 +7,7 @@ import (
 	"bufio"
 	"bytes"
 	"io"
+	"os"
 )
 
 var (

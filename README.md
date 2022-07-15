@@ -1,3 +1,9 @@
+## Disclaimer
+
+This is a fork of wonderful [digitalcrab/browscap_go](https://github.com/digitalcrab/browscap_go) library, which I hope to support in a more robust way. But time will show.
+
+Also I plan to generate a lot of testcases from whatismybrowser.com database of UAs. They seem to know their stuff, so I will try to make this library give answers close to what whatismybrowser.com thinks about any given UA.
+
 # Browser Capabilities GoLang Project
 
 PHP has `get_browser()` function which tells what the user's browser is capable of.

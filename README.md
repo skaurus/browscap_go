@@ -1,8 +1,12 @@
 ## Disclaimer
 
-This is a fork of wonderful [digitalcrab/browscap_go](https://github.com/digitalcrab/browscap_go) library, which I hope to support in a more robust way. But time will show.
+This is a fork of a wonderful [digitalcrab/browscap_go](https://github.com/digitalcrab/browscap_go) library, which I hope to support in a more robust way. But time will show.
 
-Also I plan to generate a lot of testcases from whatismybrowser.com database of UAs. They seem to know their stuff, so I will try to make this library give answers close to what whatismybrowser.com thinks about any given UA.
+So far I merged PRs from [Khan](https://github.com/digitalcrab/browscap_go/pull/16), [DDosT](https://github.com/skaurus/browscap_go/pull/2), [LiveRamp](https://github.com/digitalcrab/browscap_go/pull/9).
+
+If anything was broken during the merges - the fault is entirely mine. Tests pass though and basic usage works.
+
+I have not changed the copyright in the LICENSE as I think it would be appropriate only if maintaince is formally transferred to me.
 
 # Browser Capabilities GoLang Project
 
@@ -10,7 +14,7 @@ PHP has `get_browser()` function which tells what the user's browser is capable 
 You can check original documentation [here](http://php.net/get_browser). 
 This is GoLang analog of `get_browser()` function.
 
-[![Build Status](https://secure.travis-ci.org/digitalcrab/browscap_go.png?branch=master)](http://travis-ci.org/digitalcrab/browscap_go)
+[![Build Status](https://app.travis-ci.com/skaurus/browscap_go.png?branch=master)](https://app.travis-ci.com/github/skaurus/browscap_go)
 
 ## Introduction
 

@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/skaurus/browscap_go.svg?branch=master)](https://app.travis-ci.com/skaurus/browscap_go) [![Go Report Card](https://goreportcard.com/badge/github.com/skaurus/browscap_go)](https://goreportcard.com/report/github.com/skaurus/browscap_go)
+
 ## Disclaimer
 
 This is a fork of a wonderful [digitalcrab/browscap_go](https://github.com/digitalcrab/browscap_go) library, which I hope to support in a more robust way. But time will show.
@@ -13,8 +15,6 @@ I have not changed the copyright in the LICENSE as I think it would be appropria
 PHP has `get_browser()` function which tells what the user's browser is capable of.
 You can check original documentation [here](http://php.net/get_browser). 
 This is GoLang analog of `get_browser()` function.
-
-[![Build Status](https://app.travis-ci.com/skaurus/browscap_go.png?branch=master)](https://app.travis-ci.com/github/skaurus/browscap_go)
 
 ## Introduction
 

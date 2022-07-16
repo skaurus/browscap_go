@@ -42,7 +42,6 @@ func InitBrowsCap(path string, force bool) error {
 	return InitBrowsCapFromReader(bufio.NewReader(file), force)
 }
 
-
 func InitBrowsCapFromReader(reader *bufio.Reader, force bool) error {
 	if initialized && !force {
 		return nil

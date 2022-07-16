@@ -6,9 +6,9 @@ package browscap_go
 import (
 	"bufio"
 	"io/ioutil"
+	"os"
 	"strings"
 	"testing"
-	"os"
 )
 
 const (
@@ -170,7 +170,7 @@ func BenchmarkInit(b *testing.B) {
 
 func BenchmarkGetBrowser(b *testing.B) {
 	initFromTestIniFile(b)
-	
+
 	data, err := ioutil.ReadFile("test-data/user_agents_sample.txt")
 	if err != nil {
 		b.Error(err)
